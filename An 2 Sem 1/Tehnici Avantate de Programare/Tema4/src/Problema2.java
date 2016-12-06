@@ -1,9 +1,6 @@
-import java.util.Map;
-
 /**
  * Created by Cretu Calin on 11/23/2016.
  */
-
 class Tabla
 {
     private Point hole;
@@ -154,7 +151,6 @@ class Tabla
             divideEtImpera(new Point(point3.getX(), point3.getY() - dimensiunePtPuncte),
                     new Point(point3.getX() + dimensiunePtPuncte, point3.getY()),dimension/2);
             divideEtImpera( point4, coltDreaptaJos,dimension/2);
-
         }
     }
 }
@@ -163,7 +159,7 @@ public class Problema2 {
 
     public static void main(String arg[])
     {
-        Tabla tabla = new Tabla(4, new Point(7,7));
+        Tabla tabla = new Tabla(2, new Point(1,1));
         tabla.divideEtImperaStart();
         tabla.printTable();
         //System.out.println((int)3/2);
