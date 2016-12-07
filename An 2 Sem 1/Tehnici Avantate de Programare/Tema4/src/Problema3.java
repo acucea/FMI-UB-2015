@@ -37,11 +37,11 @@ public class Problema3
     }
 
     //quick sort partition lomuto
-    public static int partition(ArrayList<MyPair> arrayList, int p, int r)
+    public static int partition(ArrayList<MyPair> arrayList, int start, int end)
     {
-        int pivot = arrayList.get(r).valoare;
-        int i = p;
-        for (int j = p; j < r; j++)
+        int pivot = arrayList.get(end).valoare;
+        int i = start;
+        for (int j = start; j < end; j++)
         {
             if (arrayList.get(j).valoare <= pivot)
             {
@@ -50,9 +50,9 @@ public class Problema3
             }
         }
 
-        arrayList.get(i).swap(arrayList.get(r));
+        arrayList.get(i).swap(arrayList.get(end));
 
-        if (i == r)
+        if (i == end)
         {
             return i - 1;
         }

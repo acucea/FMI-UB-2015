@@ -56,12 +56,20 @@ class Patrulater
 public class Main {
 
 
+    public static double distance(MyPoint point1, MyPoint point2)
+    {
+        return  sqrt((point2.getX() - point1.getX()) * (point2.getX() - point1.getX())  +
+                ((point2.getY()- point1.getY())*(point2.getY()- point1.getY())));
+    }
+
     public static void main(String argc[])
     {
 //        MyPoint myPoint1 = new MyPoint(1,1);
 //        MyPoint myPoint2 = new MyPoint(3,1);
 //        MyPoint myPoint3 = new MyPoint(1,4);
 //        MyPoint myPoint4 = new MyPoint(3,3);
+
+
 
         MyPoint myPoint1 = new MyPoint(3,0);
         MyPoint myPoint2 = new MyPoint(0,0);
@@ -84,5 +92,12 @@ public class Main {
         {
             System.out.println("Punctul A4 este in exteriorul cercului");
         }
+
+        if(distance(myPoint1,myPoint2) == distance(myPoint3, myPoint4)
+                && distance(myPoint1,myPoint4) == distance(myPoint2,myPoint3))
+        {
+            System.out.println("Patrulaterul este circumscriptibil");
+        }
+        else System.out.println("Patrulaterul nu este circumscriptibil");
     }
 }
