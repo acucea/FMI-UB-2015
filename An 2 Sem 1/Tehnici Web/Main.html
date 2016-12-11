@@ -2,16 +2,19 @@
 <html>
 <meta charset="UTF-8">
 <title>Android Tutorials</title>
-<body>
 
 <head>
-<link rel="stylesheet" type="text/css" href="main.css">
-<meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="main.css">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="Android Tutorials">
-<meta name="keywords" content="AndroidStudio, XML, Animations, Java">
-<meta name="author" content="Cretu Calin">
+    <meta name="description" content="Android Tutorials">
+    <meta name="keywords" content="AndroidStudio, XML, Animations, Java">
+    <meta name="author" content="Cretu Calin">
 </head>
+
+<body onload="loadFunction()">
+
+<script src="javascript.js"></script>
 
 
 
@@ -20,12 +23,17 @@
 <div style="color:#0000FF">
 <h1> Android Tutorials </h1>
 </div>
+
+    <div id="time">Clock not started</div>
+    <input type="button" id="myBtn" onclick="startTime()" value="Start Time">
 </header>
 
+
+
+
+
 <div class="dropdown">
-
     <button class = "displayInLine button"> Home </button>
-
 </div>
 
 <div class="dropdown">
@@ -48,7 +56,7 @@
     </div>
 </div>
 
-
+<a href="javascript:close_window();">Exit this site </a>
 
 
 <div class="newspaper">
@@ -92,15 +100,58 @@ of the left navigation.
 </ol>
 </aside>
 
+<div>Source of tutorials :</div>
+<button onclick="openWindow()">Open source link:</button>
+
+
+<div>Do you know to be notice when a new tutorial is published?</div>
+<div>Enter your email here and don't miss a thing!</div>
+
+<input type="text" id="myText2" value="Type your email...">
+<div></div>
+
+
+<div>I'm a student : <input type="radio" id="myRadio"></div>
+
+<div>I'm not a student : <input type="radio" id="myRadio2"></div>
+
+<div>
+    <input type="checkbox" id="termAndCond" value="I agree with the terms and conditions" aria-valuetext="Display">
+    I agree with the terms and conditions
+</div>
+
+
+<div id="div1" class="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+    <canvas id="myCanvas" width="200" height="15" style="border:1px solid #d3d3d3;"></canvas>
+</div>
+<br>
+<img id="drag1" src="img_logo.png" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+<input class="displayInLine" type="button" id="surveySubmitButton" value="Submit" onclick="submitEmail()">
+
+
+
+<input type="button" value="Delete email" onclick="deleteChildren()">
+<input type="button" value="Delete all emails" onclick="deleteAll()">
+
+
+<div id="result"></div>
+<div> List of your emails : </div>
+
+<ul id="myList">
+
+</ul>
+
 
 <section>
-<h4>
+<h4 >
 If you want to know more about android development, check out this website !
 </h4>
 <iframe 
 alt ="SORRY"
 src="http://www.tutorialspoint.com/android/"></iframe>
 </section>
+
 
 
 <section>
@@ -114,6 +165,10 @@ I you want to learn HTML, check those links !
 <a href="/jquery/">jQuery</a>
 </nav>
 </section>
+
+
+
+
 
 <section>
 <footer>
