@@ -55,7 +55,7 @@ function submitEmail() {
 }
 
 function getRandomColor() {
-    var letters = '0123456789ABCDEF';
+    var letters = '0123456789ABCDE';
     var color = '#';
     for (var i = 0; i < 6; i++ ) {
         color += letters[Math.floor(Math.random() * 16)];
@@ -74,11 +74,11 @@ function loadFunction() {
     editCansas();
 }
 
-function appendChild(boy) {
-    var t = document.createTextNode("You are a " +boy);
+function appendChild(student) {
+    var t = document.createTextNode("You are a " +student);
     document.body.appendChild(t);
     var btn = document.createElement("BUTTON");
-    var t = document.createTextNode("Click here, " +boy);
+    var t = document.createTextNode("Click here, " +student);
     btn.appendChild(t);
     document.body.appendChild(btn);
 
