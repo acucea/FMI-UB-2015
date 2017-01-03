@@ -2,16 +2,16 @@
                                 TEME
                                 ~~~~
 
-F1. (0.5 puncte) Scrieti un program care primeste ca argumente in linia de
+#F1. (0.5 puncte) Scrieti un program care primeste ca argumente in linia de
  comanda doi intregi si afisaza cmmdc al lor.
 
-F2. (0.5 puncte) Scrieti un program care primeste ca argument in linia de
+#F2. (0.5 puncte) Scrieti un program care primeste ca argument in linia de
  comanda un intreg si verifica daca este prim.
 
-F3. (2.5 puncte) Scrieti un program care primeste ca argument in linia de
+#F3. (2.5 puncte) Scrieti un program care primeste ca argument in linia de
  comanda un intreg si afisaza descompunerea sa in factori primi.
 
-F4. (1 punct) Scrieti un program care primeste ca argument in linia de
+#F4. (1 punct) Scrieti un program care primeste ca argument in linia de
  comanda un intreg si afisaza suma cifrelor sale.
 
 F5. (1 punct) Scrieti un program care primeste ca argument in linia de

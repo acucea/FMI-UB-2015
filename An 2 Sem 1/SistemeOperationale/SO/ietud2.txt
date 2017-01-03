@@ -428,7 +428,7 @@ int main(int na, char *a[]){
 
 ==================== TEME:
 
-D1. (4 puncte) Program care primeste ca argument in linia de comanda un
+#D1. (4 puncte) Program care primeste ca argument in linia de comanda un
  director si afisaza arborescenta de directoare si fisiere cu originea
  in el (similar comenzii tree /f din DOS).
 
