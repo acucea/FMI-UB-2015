@@ -32,13 +32,13 @@ void readFile(int fds[],int myargc, int fd)
         buffer[k++] = t; 
         printf("%c", t);
 		appendFile(fds,myargc,t); 
-        if(t == '\n' && t == '\0') {
+        /*if(t == '\n' && t == '\0') {
             printf("%d", atoi(buffer));
 			appendFileInt(fds,myargc,atoi(buffer));
             for(int i=0; i<10; i++) 
                 buffer[i]='\0';
             k = 0;
-        }
+        }*/
     }
     while (bytes_read != 0); 
 }

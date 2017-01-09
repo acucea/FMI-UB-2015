@@ -14,6 +14,7 @@ public class Problema2 {
     private static int[][] matrix;
     public static void main(String argc[]) throws FileNotFoundException {
 
+        //hardcoded path
         Scanner scanner = new Scanner(new File("C:\\Users\\cretu\\Documents\\GitHub\\Laboratoare\\" +
                 "Laboratoare\\An 2 Sem 1\\Tehnici Avantate de Programare\\Tema5\\src\\problema2.txt"));
         int n = scanner.nextInt();
