@@ -58,6 +58,7 @@ public class Server
                 sendMessage(0, new AmIPartner(true));
             }else{
                 sendMessage(clients.size()-1,new AmIPartner(false) );
+                sendMessage(clients.size()-1, gameController.getMatrix());
             }
 
         }
@@ -69,7 +70,6 @@ public class Server
     public void sendMessage(int pointerConexiune, Object message) throws IOException
     {
         // TODO
-        System.out.println("Send message");
         clientOutputStreams.get(pointerConexiune).writeObject(message);
         clientOutputStreams.get(pointerConexiune).flush();
     }
@@ -77,7 +77,6 @@ public class Server
     public Object readMessage(int pointerConexiune) throws ClassNotFoundException, IOException
     {
         // TODO
-        System.out.println("Read message");
         return clientInputStreams.get(pointerConexiune).readObject();
     }
 

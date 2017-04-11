@@ -30,12 +30,17 @@ public class TicTacToeGame
 
     private TTTValue currentTurn;
 
+    public TTTValue[][] getMatrix() {
+        return matrix;
+    }
+
     private TTTValue[][] matrix;
     private JButton[][] buttons;
 
     private int partnerId = -1;
 
     private boolean partner;
+
 
     public void showNewGameWindow()
     {
@@ -140,6 +145,11 @@ public class TicTacToeGame
         amIPartner();
         asyncWaitForPartnerMove();
 
+
+
+
+
+
     }
 
     public void asyncAmIPartner(){
@@ -157,6 +167,10 @@ public class TicTacToeGame
 
         try {
             this.partner = ((AmIPartner) client.ReadMessage()).amIPartner();
+
+            if(!this.partner){
+                this.matrix = (TTTValue[][]) client.ReadMessage();
+            }
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -169,6 +183,8 @@ public class TicTacToeGame
             System.out.println("Not Partner");
         }
     }
+
+
 
     public void playerJoined(int playerId)
     {
@@ -275,6 +291,9 @@ public class TicTacToeGame
             public void run() {
                 try{
                     waitForOtherPlayer();
+                    if(client != null && !partner ) {
+                        run();
+                    }
                 }
                 catch (IOException | ClassNotFoundException e){
                     e.printStackTrace();
@@ -293,6 +312,14 @@ public class TicTacToeGame
             message = (TickMessage) client.ReadMessage();
         }else{
             message = (TickMessage) server.readMessage(partnerId);
+
+            //send update to spectators
+            for(int i = 0 ; i < server.getNoOfClients(); i++){
+                if(i != partnerId){
+                    server.sendMessage(i,message);
+                }
+            }
+
         }
         incomingTick(message);
 
