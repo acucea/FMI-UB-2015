@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ro.unibuc.fmi.TicTacToeGame;
+import ro.unibuc.fmi.messages.AmIPartner;
 
 public class Server
 {
@@ -35,16 +36,33 @@ public class Server
     public void startServer() throws IOException
     {
         online = true;
-        Socket clientSocket = server.accept();
-        System.out.println("Client connected");
-        ObjectOutputStream output = new ObjectOutputStream(clientSocket.getOutputStream());
-        ObjectInputStream input = new ObjectInputStream(clientSocket.getInputStream());
-        clients.add(clientSocket);
-        clientInputStreams.add(input);
-        clientOutputStreams.add(output);
-        output.flush();
+        Socket clientSocket;
+        while(online){
+            clientSocket = server.accept();
+            clients.add(clientSocket);
 
-        gameController.playerJoined(clients.size() -1);
+            System.out.println("Client connected" + clients.size());
+
+            ObjectOutputStream output = new ObjectOutputStream(clientSocket.getOutputStream());
+            ObjectInputStream input = new ObjectInputStream(clientSocket.getInputStream());
+
+            clientInputStreams.add(input);
+            clientOutputStreams.add(output);
+            output.flush();
+
+            gameController.playerJoined(clients.size() -1);
+
+            //partner or not
+
+            if (clients.size() == 1){
+                sendMessage(0, new AmIPartner(true));
+            }else{
+                sendMessage(clients.size()-1,new AmIPartner(false) );
+            }
+
+        }
+
+
 
     }
 
@@ -85,5 +103,12 @@ public class Server
                 e.printStackTrace();
             }
         }
+    }
+
+    public int getNoOfClients(){
+        if (clients == null){
+            return 0;
+        }
+        return clients.size();
     }
 }

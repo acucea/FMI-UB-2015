@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ro.unibuc.fmi.client.Client;
+import ro.unibuc.fmi.messages.AmIPartner;
 import ro.unibuc.fmi.messages.TickMessage;
 import ro.unibuc.fmi.server.Server;
 import ro.unibuc.fmi.uilisteners.ButtonListener;
@@ -33,6 +34,8 @@ public class TicTacToeGame
     private JButton[][] buttons;
 
     private int partnerId = -1;
+
+    private boolean partner;
 
     public void showNewGameWindow()
     {
@@ -134,8 +137,37 @@ public class TicTacToeGame
         client = new Client();
         client.connect(port, host);
         startGame();
+        amIPartner();
         asyncWaitForPartnerMove();
 
+    }
+
+    public void asyncAmIPartner(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                amIPartner();
+            }
+        }).start();
+
+    }
+
+    public void amIPartner(){
+
+        try {
+            this.partner = ((AmIPartner) client.ReadMessage()).amIPartner();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (this.partner){
+            System.out.println("Partner");
+        }
+        else{
+            System.out.println("Not Partner");
+        }
     }
 
     public void playerJoined(int playerId)
@@ -194,8 +226,23 @@ public class TicTacToeGame
             TickMessage tm = new TickMessage(row,col, currentTurn);
 
             if(server != null){
-                server.sendMessage(partnerId,tm);
-            }else if(client != null){
+                try
+                {
+                    for (int i = 0 ; i < server.getNoOfClients();i++){
+                        server.sendMessage(i,tm);
+                        System.out.println("Sent message to clinet " + i);
+                    }
+//                    server.sendMessage(partnerId, message);
+//                    for(int i = 1 ; i < server.getNoOfClients() - 1; i++){
+//
+//                    }
+                }
+                catch (IOException e)
+                {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+            }else if(client != null && partner){
                 client.SendMessage(tm);
             }
 
@@ -257,13 +304,12 @@ public class TicTacToeGame
         buttons[message.col][message.row].setText(message.value.toString());
         // if incoming tick, it is our turn.
         // activate buttons.
-        for (int col = 0; col < 3; col++)
-        {
-            for (int row = 0; row < 3; row++)
-            {
-                if (matrix[col][row].equals(TTTValue.Empty))
-                {
-                    buttons[col][row].setEnabled(true);
+        if(server != null || partner) {
+            for (int col = 0; col < 3; col++) {
+                for (int row = 0; row < 3; row++) {
+                    if (matrix[col][row].equals(TTTValue.Empty)) {
+                        buttons[col][row].setEnabled(true);
+                    }
                 }
             }
         }

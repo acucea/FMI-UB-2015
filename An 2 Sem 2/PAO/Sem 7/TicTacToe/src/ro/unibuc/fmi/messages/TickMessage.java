@@ -22,4 +22,12 @@ public class TickMessage implements Serializable
         this.value = value;
     }
 
+    public String toString() {
+        return "TickMessage{" +
+                "row=" + row +
+                ", col=" + col +
+                ", value=" + value +
+                '}';
+    }
+
 }
