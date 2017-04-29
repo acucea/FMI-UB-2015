@@ -1,27 +1,4 @@
-parent_of(rickardStark,eddardStark).
-
-parent_of(rickardStark,lyannaStark).
-
-parent_of(lyarraStark,eddardStark).
-
-parent_of(lyarraStark,lyannaStark).
-
-parent_of(aerysTargaryen,rhaegarTargaryen).
-
-parent_of(rhaellaTargaryen,rhaegarTargaryen).
-
-parent_of(rhaegarTargaryen,jonSnow).
-
-parent_of(lyannaStark,jonSnow).
-
-ancestor_of(X,Y) :- parent_of(X,Y).
-
-ancestor_of(X,Y) :- parent_of(X,Z), ancestor_of(Z,Y).
-
-
-% Maze
-
-connected(1,2).
+/*connected(1,2).
 connected(3,4).
 connected(5,6).
 connected(7,8).
@@ -41,13 +18,10 @@ connected(16,12).
 connected(14,17).
 connected(16,19).
 
-path_to(X,Y) :- connected(X,Y).
-path_to(X,Y) :- connected(X,Z) , path_to(Z,Y).
+path_to(X,Y) :- connected(X,Y) .
+path_to(X,Y) :- connected(X,Z) , path_to(Z,Y) .*/
 
-
-% Travel
-
-byCar(auckland,hamilton).
+/*byCar(auckland,hamilton).
 byCar(hamilton,raglan).
 byCar(valmont,saarbruecken).
 byCar(valmont,metz).
@@ -63,33 +37,33 @@ byPlane(paris,losAngeles).
 byPlane(bangkok,auckland).
 byPlane(losAngeles,auckland).
 
-goBy(X,Y) :- byCar(X,Y).
-goBy(X,Y) :- byTrain(X,Y).
-goBy(X,Y) :- byPlane(X,Y).
+travel_by(X,Y) :- byCar(X,Y).
+travel_by(X,Y) :- byTrain(X,Y).
+travel_by(X,Y) :- byPlane(X,Y).
 
-travel(X,Y) :- goBy(X,Y).
-travel(X,Y) :- goBy(X,Z) , travel(Z,Y).
+travel(X,Y) :- travel_by(X,Y).
+travel(X,Y) :- travel_by(X,Z) , travel(Z,Y).
 
-travel(X,Y,go(X,Y)) :- goBy(X,Y).
-travel(X,Y,go(X,Z,G)) :- goBy(X,Z) , travel(Z,Y,G).
+travel(X,Y,go(X,Y)) :- travel_by(X,Y).
+travel(X,Y,go(X,Z,G)) :- travel_by(X,Z) , travel(Z,Y,G).
 
-travelx(X,Y,Z) :-  
-
-
+travelx(X,Y,Z) :- */
 
 
+word(abalone,a,b,a,l,o,n,e).
+word(abandon,a,b,a,n,d,o,n).
+word(enhance,e,n,h,a,n,c,e).
+word(anagram,a,n,a,g,r,a,m).
+word(connect,c,o,n,n,e,c,t).
+word(elegant,e,l,e,g,a,n,t).
 
-
-
-
-
-
-
-
-
-
-
-
+crosswd(A,B,C,D,E,F) :- word(A,_,A2,_,A4,_,A6,_),
+    					word(B,_,B2,_,B4,_,B6,_),
+    					word(C,_,C2,_,C4,_,C6,_),
+    					word(D,_,A2,_,B2,_,C2,_),
+    					word(E,_,A4,_,B4,_,C4,_),
+    					word(F,_,A6,_,B6,_,C6,_).
+    					
 
 
 

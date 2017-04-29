@@ -1,0 +1,7 @@
+managers/Manager.class
+managers/DatabaseManager.class
+servlets/CreateUserServlet.class
+servlets/LoginUserServlet.class
+responses/RequestResponse.class
+database/DataBase.class
+Servlet.class
