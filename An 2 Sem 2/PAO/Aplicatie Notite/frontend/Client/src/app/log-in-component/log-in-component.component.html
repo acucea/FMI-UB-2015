@@ -1,10 +1,15 @@
 <p>New here? Create Accout</p>
   <input type="button" (click)="createAccount();" value="Create Accout">
 
+<p *ngIf="username">Your username is : {{username}}</p>
+
+
 <p>Log it</p>
   <form>
 
     <label for="username">Insert Username</label>
-    <input type="text" id="username">
-    <input type="submit" (click)="createAccount();" value="Log in">
+    <input #usernameInput type="text" id="username">
+    <input type="submit" (click)="loginUser(usernameInput.value);" value="Log in">
   </form>
+
+<p *ngIf="loggedInFailed">Login Failed !</p>

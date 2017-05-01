@@ -1,5 +1,7 @@
 package database;
 
+import pojos.Note;
+
 import java.sql.*;
 import java.util.Objects;
 import java.util.UUID;
@@ -16,6 +18,10 @@ public class DataBase {
     public static void main(String argc[]) throws SQLException, ClassNotFoundException {
 
             connectToDataBase();
+            Note note = new Note("calin", false, "password","sha lala ");
+            note.setId(4);
+            updateNote(note);
+
             //String username = createUser();
             //ResultSet resultSet = statement.executeQuery("SELECT * FROM users ORDER BY id");
 
@@ -25,7 +31,8 @@ public class DataBase {
 //                resultSet.getString(2) );
 //            }
             //System.out.println(username);
-        System.out.println(findUser("2eafbe24-b165-4929-a2c0-878ad5034560"));
+
+       // System.out.println(findUser("2eafbe24-b165-4929-a2c0-878ad5034560"));
         deconectFromDataBase();
 
     }
@@ -53,4 +60,44 @@ public class DataBase {
         response.next();
         return Objects.equals(response.getString(2), username);
     }
+
+    public static void createNote(Note note) throws SQLException {
+
+        String user = note.getUser();
+        String text = note.getText();
+
+        int resultSet ;
+        String password ;
+        if(note.isHasPassword()){
+            password = note.getPassword();
+            System.out.println("INSERT INTO notes(text, user_name , password) VALUE (" + "\"" + text + "," +user + "," + password + "\";");
+            resultSet = statement.executeUpdate("INSERT INTO notes(text, user_name , password) VALUE (" + "\"" + text + "\",\"" +user + "\",\"" + password + "\");" );
+        }else{
+            resultSet = statement.executeUpdate("INSERT INTO notes(text, user_name) VALUE (" + "\"" + text + "\",\"" + user + "\");" );
+        }
+        System.out.println(resultSet);
+
+    }
+
+    public static void updateNote(Note note) throws SQLException {
+        //require note.id
+        int id = note.getId();
+
+        String user = note.getUser();
+        String text = note.getText();
+
+        int resultSet ;
+        String password ;
+        if(note.isHasPassword()){
+            password = note.getPassword();
+            System.out.println("UPDATE notes SET text =\"" + text + "\"," + "password=\"" + password + "\" WHERE id is "  + id + ";" );
+            resultSet = statement.executeUpdate("UPDATE notes SET text =\"" + text + "\"," + "password=\"" + password + "\" WHERE id = "  + id + ";" );
+
+        }else{
+            resultSet = statement.executeUpdate("UPDATE notes SET text =\"" + text + "," + "\" WHERE id = "  + id + ";" );
+        }
+        System.out.println(resultSet);
+
+    }
+
 }

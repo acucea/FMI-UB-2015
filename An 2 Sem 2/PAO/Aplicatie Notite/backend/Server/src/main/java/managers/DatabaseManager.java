@@ -1,6 +1,7 @@
 package managers;
 
 import database.DataBase;
+import pojos.Note;
 
 import java.sql.SQLException;
 
@@ -23,6 +24,20 @@ public class DatabaseManager {
     public boolean findUser(String username) throws SQLException {
         return dataBase.findUser(username);
     }
+    public void createNote(Note note) throws SQLException {
+        dataBase.createNote(note);
+    }
+    public void updateNote(Note note) throws  SQLException {
+        dataBase.updateNote(note);
+    }
+    public void getNotesByUser(){
+
+    }
+    public void getNoteById(){
+
+    }
+
+
 
 
 }

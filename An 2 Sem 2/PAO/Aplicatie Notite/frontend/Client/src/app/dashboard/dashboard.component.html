@@ -1,0 +1,36 @@
+<p>
+  Dashboard
+</p>
+
+<p>Create note here : </p>
+<div></div>
+
+<input #text type="text" value="Note text ..">
+<input #password type="text" >
+<input type="button" (click)="createNote(text.value, password.value)"  value="Create Note">
+
+
+<p>Notes : </p>
+<table *nfIf="notes">
+
+  <tr>
+    <th>Text</th>
+    <th>Password</th>
+    <th>Link</th>
+    <th>Update Note</th>
+  </tr>
+
+  <tr *ngFor="let note of notes">
+    <th>{{note.text}}</th>
+    <th>{{note.password}}</th>
+    <th>
+      <input type="button" value="Get Link" (click)="getLink(note.id)">
+    </th>
+    <th>
+      <input type="button" value="Update note" (click)="updateNote(note.id)">
+    </th>
+
+  </tr>
+
+</table>
+

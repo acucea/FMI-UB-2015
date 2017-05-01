@@ -1,5 +1,6 @@
 package servlets;
 
+import com.google.gson.JsonObject;
 import managers.Manager;
 import responses.RequestResponse;
 
@@ -13,6 +14,13 @@ import java.sql.SQLException;
  * Created by calin on 20.04.2017.
  */
 public class CreateUserServlet extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+
+    public CreateUserServlet(){
+        super();
+    }
 
     public void init() throws ServletException {
 
@@ -29,11 +37,24 @@ public class CreateUserServlet extends HttpServlet {
 
             username = Manager.getInstance().getDatabaseManager().createUser();
 
-            RequestResponse rs = new RequestResponse(200,username,"fine");
+            JsonObject rs = new JsonObject();
+            if(username.length() > 0 ){
+                rs.addProperty("success", true);
+                rs.addProperty("username", username);
 
+            }
+
+
+            response.setHeader("Access-Control-Allow-Origin", "*");
+            response.setHeader("Access-Control-Allow-Methods", "GET");
+            response.setHeader("Access-Control-Allow-Headers", "Content-Type");
+            response.setHeader("Access-Control-Max-Age", "86400");
             response.setContentType("application/json");
+            response.addHeader("Access-Control-Allow-Origin", "*");
+
             PrintWriter out = response.getWriter();
-            out.println(rs.toJson());
+            out.println(rs.toString());
+            out.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
