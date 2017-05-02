@@ -30,7 +30,7 @@ public class LoginUserServlet extends HttpServlet {
     }
 
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-
+        
         StringBuilder buffer = new StringBuilder();
         BufferedReader reader = request.getReader();
         String line;
@@ -55,6 +55,8 @@ public class LoginUserServlet extends HttpServlet {
         }
         if (isUserInDB){
             jsonObject.addProperty("logged",true);
+            HttpSession session = request.getSession();
+            session.setAttribute("user", username);
         }else{
             jsonObject.addProperty("logged",false);
         }
