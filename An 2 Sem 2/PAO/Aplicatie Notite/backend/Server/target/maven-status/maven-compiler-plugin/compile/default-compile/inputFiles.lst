@@ -1,7 +1,11 @@
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/CreateUserServlet.java
-/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/Servlet.java
+/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/GetNotesServlet.java
+/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/GetNoteByIdServlet.java
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/responses/RequestResponse.java
+/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/pojos/Note.java
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/managers/DatabaseManager.java
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/database/DataBase.java
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/managers/Manager.java
+/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/CreateNoteServlet.java
+/home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/UpdateNoteServlet.java
 /home/calin/GitHub/Laboratoare/Laboratoare/An 2 Sem 2/PAO/Aplicatie Notite/backend/Server/src/main/java/servlets/LoginUserServlet.java

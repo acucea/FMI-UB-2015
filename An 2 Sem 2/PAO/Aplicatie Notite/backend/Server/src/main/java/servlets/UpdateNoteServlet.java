@@ -37,6 +37,9 @@ public class UpdateNoteServlet extends HttpServlet {
         String password = jsonObject.get("password").toString();
 
 
+        password = password.replace("\"", "");
+        text = text.replace("\"", "");
+
         Note note;
         if(hasPassword){
             note = new Note(id,"any",hasPassword, password, text);
@@ -49,7 +52,6 @@ public class UpdateNoteServlet extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
 
 
         response.setContentType("application/json");

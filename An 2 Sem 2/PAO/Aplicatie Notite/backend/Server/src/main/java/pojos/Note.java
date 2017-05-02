@@ -20,6 +20,17 @@ public class Note {
         this.hasPassword = hasPassword;
     }
 
+    @Override
+    public String toString() {
+        return "Note{" +
+                "id=" + id +
+                ", user='" + user + '\'' +
+                ", hasPassword=" + hasPassword +
+                ", password='" + password + '\'' +
+                ", text='" + text + '\'' +
+                '}';
+    }
+
     public String getPassword() {
         return password;
     }

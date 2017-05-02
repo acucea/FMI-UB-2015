@@ -1,0 +1,28 @@
+<h1>
+  View Note
+</h1>
+
+<div *ngIf="note">
+
+  <div *ngIf="note.hasPassword">
+
+    <p>Password</p>
+    <input #password type="text" value="">
+    <input type="button" value="Confirm" (click)="checkPassword(password.value)">
+  </div>
+
+  <div *ngIf="showNote">
+
+    <p>Note text :</p>
+    <p>{{note.text}}</p>
+
+  </div>
+
+  <div *ngIf="wrongPassword">
+    <p>Wrong password !</p>
+  </div>
+
+
+
+
+</div>

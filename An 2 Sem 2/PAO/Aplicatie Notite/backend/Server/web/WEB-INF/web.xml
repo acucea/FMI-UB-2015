@@ -44,5 +44,25 @@
         <url-pattern>/updateNote</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetNotesServlet</servlet-name>
+        <servlet-class>servlets.GetNotesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetNotesServlet</servlet-name>
+        <url-pattern>/getNotes</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetNoteById</servlet-name>
+        <servlet-class>servlets.GetNoteByIdServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>GetNoteById</servlet-name>
+        <url-pattern>/getNoteById</url-pattern>
+    </servlet-mapping>
+
 
 </web-app>

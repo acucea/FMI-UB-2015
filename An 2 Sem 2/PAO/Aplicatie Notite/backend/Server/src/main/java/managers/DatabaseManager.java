@@ -4,6 +4,7 @@ import database.DataBase;
 import pojos.Note;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  * Created by calin on 20.04.2017.
@@ -30,11 +31,12 @@ public class DatabaseManager {
     public void updateNote(Note note) throws  SQLException {
         dataBase.updateNote(note);
     }
-    public void getNotesByUser(){
+    public ArrayList<Note> getNotesByUser(String user) throws SQLException {
+        return dataBase.getNotes(user);
 
     }
-    public void getNoteById(){
-
+    public Note getNoteById(int id) throws SQLException{
+        return dataBase.getNoteById(id);
     }
 
 

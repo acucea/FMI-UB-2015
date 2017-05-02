@@ -24,18 +24,45 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet>-->
-        <!--<servlet-name>Servlet</servlet-name>-->
-        <!--<servlet-class>Servlet</servlet-class>-->
-    <!--</servlet>-->
+    <servlet>
+        <servlet-name>CreateNoteServlet</servlet-name>
+        <servlet-class>servlets.CreateNoteServlet</servlet-class>
+    </servlet>
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>Servlet</servlet-name>-->
-        <!--<url-pattern>/Servlet</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet-mapping>
+        <servlet-name>CreateNoteServlet</servlet-name>
+        <url-pattern>/createNote</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>UpdateNoteServlet</servlet-name>
+        <servlet-class>servlets.UpdateNoteServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>UpdateNoteServlet</servlet-name>
+        <url-pattern>/updateNote</url-pattern>
+    </servlet-mapping>
 
+    <servlet>
+        <servlet-name>GetNotesServlet</servlet-name>
+        <servlet-class>servlets.GetNotesServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>GetNotesServlet</servlet-name>
+        <url-pattern>/getNotes</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>GetNoteById</servlet-name>
+        <servlet-class>servlets.GetNoteByIdServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>GetNoteById</servlet-name>
+        <url-pattern>/getNoteById</url-pattern>
+    </servlet-mapping>
 
 
 </web-app>

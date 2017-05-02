@@ -12,6 +12,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import {CreateNoteService} from "./dashboard/dashboard-service/create-note.service";
 import {UpdateNoteService} from "./dashboard/dashboard-service/update-note.service";
+import {GetAllNotesService} from "./dashboard/dashboard-service/get-all-notes-by-user.service";
+import { ViewNoteComponent } from './view-note/view-note.component';
+import {GetNoteByIdService} from "./view-note/view-note.services/get-note-by-id.service";
 
 const appRoutes = [
   {
@@ -19,6 +22,9 @@ const appRoutes = [
   },
   {
     path: 'dashboard' , component : DashboardComponent
+  },
+  {
+    path: 'getNote/:id' , component : ViewNoteComponent
   },
   {
     path: '', redirectTo : 'login', pathMatch: 'full'
@@ -34,7 +40,8 @@ const appRoutes = [
     AppComponent,
     LogInComponentComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ViewNoteComponent
   ],
   imports: [
     BrowserModule,
@@ -47,6 +54,8 @@ const appRoutes = [
               LogInService,
               CreateNoteService,
               UpdateNoteService,
+              GetAllNotesService,
+              GetNoteByIdService
                              ],
   bootstrap: [AppComponent]
 })

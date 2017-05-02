@@ -1,8 +1,11 @@
 package database;
 
+import com.google.gson.JsonArray;
+import org.json.JSONArray;
 import pojos.Note;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -18,9 +21,23 @@ public class DataBase {
     public static void main(String argc[]) throws SQLException, ClassNotFoundException {
 
             connectToDataBase();
-            Note note = new Note("calin", false, "password","sha lala ");
-            note.setId(4);
-            updateNote(note);
+
+            Note note = getNoteById(8);
+            System.out.println(note);
+//
+//         ArrayList<Note> notes = new ArrayList<>();
+//         notes = getNotes("calin");
+//
+//         for(int i = 0 ; i < notes.size(); i++){
+//             System.out.println(notes.get(i));
+//         }
+//
+//        JSONArray json = new JSONArray(notes);
+//        System.out.println(json.toString());
+
+//            Note note = new Note("calin", false, "password","sha lala ");
+//            note.setId(4);
+//            updateNote(note);
 
             //String username = createUser();
             //ResultSet resultSet = statement.executeQuery("SELECT * FROM users ORDER BY id");
@@ -36,7 +53,6 @@ public class DataBase {
         deconectFromDataBase();
 
     }
-
 
 
     public static void connectToDataBase() throws ClassNotFoundException, SQLException {
@@ -99,5 +115,51 @@ public class DataBase {
         System.out.println(resultSet);
 
     }
+
+    public static ArrayList<Note> getNotes(String user) throws SQLException{
+
+        ArrayList<Note> notes = new ArrayList<>();
+
+
+        ResultSet response = statement.executeQuery("SELECT * FROM notes WHERE user_name=\"" + user + "\";");
+        while(response.next()){
+            int id = response.getInt("id");
+            String text = response.getString("text");
+            String password = response.getString("password");
+
+            Note note ;
+
+            if(password == null){
+                note = new Note(id,user,false, "any", text);
+
+            }else{
+                note = new Note(id,user,true, password, text);
+            }
+            notes.add(note);
+        }
+
+        return notes;
+
+    }
+
+    public static Note getNoteById(int id) throws SQLException{
+
+        ResultSet response = statement.executeQuery("SELECT * FROM notes WHERE id="+id+";");
+        response.next();
+
+        String text = response.getString("text");
+        String password = response.getString("password");
+        String user = response.getString("user_name");
+
+
+        if(password == null){
+            return new Note(id,user,false, "any", text);
+
+        }else{
+            return new Note(id,user,true, password, text);
+        }
+
+    }
+
 
 }

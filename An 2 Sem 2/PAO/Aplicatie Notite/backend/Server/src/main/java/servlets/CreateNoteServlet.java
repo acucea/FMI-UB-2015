@@ -6,6 +6,7 @@ import managers.Manager;
 import pojos.Note;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,15 +27,21 @@ public class CreateNoteServlet extends HttpServlet{
         }
         String data = buffer.toString();
 
+        HttpSession session = request.getSession();
+        String username = (String) session.getAttribute("user");
+
 
         JsonObject jsonObject = (JsonObject) new JsonParser().parse(data);
 
-        String username = jsonObject.get("user").toString();
         String text = jsonObject.get("text").toString();
         boolean hasPassword  = jsonObject.get("hasPassword").getAsBoolean();
         String password = jsonObject.get("password").toString();
-        username = username.replace("\"","");
+
         log("username is " + username);
+
+        username = username.replace("\"", "");
+        password = password.replace("\"", "");
+        text = text.replace("\"", "");
 
         Note note;
         if(hasPassword){
@@ -56,10 +63,12 @@ public class CreateNoteServlet extends HttpServlet{
 //        }
 
 
+        JsonObject jsonObject1 = new JsonObject();
+        jsonObject1.addProperty("success", true);
 
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
-        out.println(jsonObject.toString());
+        out.println(jsonObject1.toString());
         out.close();
 
 

@@ -1,3 +1,4 @@
+
 import {URL} from "../../shared/URL";
 import {Injectable} from "@angular/core";
 import {Http, Response, RequestOptions, Headers, URLSearchParams} from "@angular/http";
@@ -5,19 +6,20 @@ import {Observable} from "rxjs";
 import {Note} from "../../pojos/note";
 
 @Injectable()
-export class GetAllNotesService{
+export class GetNoteByIdService{
 
-  url = URL + "/getNotes";
+  url = URL + "/getNoteById?id=";
 
   constructor(private http : Http){
 
   }
 
-  getNotes() : Observable<any>{
+  getNoteById(id : number) : Observable<any>{
 
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
+    this.url  = this.url + id;
 
     return this.http.get(this.url,options)
       .map(res => res.json())

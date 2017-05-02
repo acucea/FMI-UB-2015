@@ -8,10 +8,10 @@
 <input #text type="text" value="Note text ..">
 <input #password type="text" >
 <input type="button" (click)="createNote(text.value, password.value)"  value="Create Note">
-
+<p *ngIf="noteCreated">Note created !</p>
 
 <p>Notes : </p>
-<table *nfIf="notes">
+<table *ngIf="notes">
 
   <tr>
     <th>Text</th>
@@ -27,10 +27,18 @@
       <input type="button" value="Get Link" (click)="getLink(note.id)">
     </th>
     <th>
-      <input type="button" value="Update note" (click)="updateNote(note.id)">
+      <input type="button" value="Update note" (click)="showUpdateNote(note)">
     </th>
 
   </tr>
 
 </table>
 
+<div *ngIf="selectedNote">
+
+<input #textUpdate type="text" value="{{selectedNote.text}}" >
+<input #passwordUpdate type="text" value="{{selectedNote.password}}" >
+<input type="button" (click)="updateNote(textUpdate.value, passwordUpdate.value)" value="Update Note">
+<p *ngIf="noteCreated">Note created !</p>
+
+</div>
