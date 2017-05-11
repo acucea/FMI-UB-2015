@@ -15,24 +15,9 @@ import {UpdateNoteService} from "./dashboard/dashboard-service/update-note.servi
 import {GetAllNotesService} from "./dashboard/dashboard-service/get-all-notes-by-user.service";
 import { ViewNoteComponent } from './view-note/view-note.component';
 import {GetNoteByIdService} from "./view-note/view-note.services/get-note-by-id.service";
+import {AppRoutingModule} from "./app.routing.module";
 
-const appRoutes = [
-  {
-    path: 'login' , component : LogInComponentComponent
-  },
-  {
-    path: 'dashboard' , component : DashboardComponent
-  },
-  {
-    path: 'getNote/:id' , component : ViewNoteComponent
-  },
-  {
-    path: '', redirectTo : 'login', pathMatch: 'full'
-  },
-  {
-    path: '**' , component : PageNotFoundComponent
-  }
-];
+
 
 
 @NgModule({
@@ -48,7 +33,7 @@ const appRoutes = [
     FormsModule,
     HttpModule,
     JsonpModule,
-    RouterModule.forRoot(appRoutes)
+    AppRoutingModule
   ],
   providers: [CreateUserService,
               LogInService,
