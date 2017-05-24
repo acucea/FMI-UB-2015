@@ -1,11 +1,5 @@
-managers/Manager.class
-managers/DatabaseManager.class
-servlets/CreateUserServlet.class
-servlets/UpdateNoteServlet.class
 servlets/GetNoteByIdServlet.class
-servlets/LoginUserServlet.class
 responses/RequestResponse.class
+servlets/CreateUserServlet.class
 servlets/GetNotesServlet.class
-database/DataBase.class
 pojos/Note.class
-servlets/CreateNoteServlet.class

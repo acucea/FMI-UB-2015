@@ -54,6 +54,7 @@ public class CreateUserServlet extends HttpServlet {
 
             PrintWriter out = response.getWriter();
             out.println(rs.toString());
+            out.flush();
             out.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

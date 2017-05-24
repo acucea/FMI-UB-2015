@@ -43,6 +43,7 @@ public class GetNoteByIdServlet extends HttpServlet {
 
             PrintWriter out = response.getWriter();
             out.println(jsonObject.toString());
+            out.flush();
             out.close();
 
         } catch (SQLException | ClassNotFoundException e) {

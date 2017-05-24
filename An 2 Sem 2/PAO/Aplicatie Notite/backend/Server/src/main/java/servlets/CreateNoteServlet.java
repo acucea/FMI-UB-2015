@@ -69,6 +69,7 @@ public class CreateNoteServlet extends HttpServlet{
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.println(jsonObject1.toString());
+        out.flush();
         out.close();
 
 

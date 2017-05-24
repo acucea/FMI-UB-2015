@@ -22,7 +22,8 @@
 
   <tr *ngFor="let note of notes">
     <th>{{note.text}}</th>
-    <th>{{note.password}}</th>
+    <th *ngIf="note.password != 'any'">{{note.password}}</th>
+    <th *ngIf="note.password == 'any'">-</th>
     <th>
       <input type="button" value="Get Link" (click)="getLink(note.id)">
     </th>

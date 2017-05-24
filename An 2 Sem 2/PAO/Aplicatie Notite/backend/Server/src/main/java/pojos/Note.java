@@ -4,6 +4,7 @@ package pojos;
  * Created by calin on 01.05.2017.
  */
 public class Note {
+
     public String getUser() {
         return user;
     }

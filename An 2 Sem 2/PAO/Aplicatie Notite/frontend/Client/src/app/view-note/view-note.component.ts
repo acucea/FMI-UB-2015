@@ -36,9 +36,9 @@ export class ViewNoteComponent implements OnInit {
       );
 
   }
-  
+
   checkPassword(password : string ){
-    if(this.note.password = password){
+    if(this.note.password === password){
       this.showNote = true;
     }else{
       this.wrongPassword = true;

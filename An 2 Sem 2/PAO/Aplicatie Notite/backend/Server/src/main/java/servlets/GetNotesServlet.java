@@ -41,6 +41,7 @@ public class GetNotesServlet extends HttpServlet{
 
             PrintWriter out = response.getWriter();
             out.println(jsonArray.toString());
+            out.flush();
             out.close();
 
         } catch (SQLException | ClassNotFoundException e) {

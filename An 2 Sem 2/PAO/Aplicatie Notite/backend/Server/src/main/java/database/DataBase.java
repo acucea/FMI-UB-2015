@@ -22,9 +22,10 @@ public class DataBase {
 
             connectToDataBase();
 
-            Note note = getNoteById(8);
+            Note note = getNoteById(8,9);
             System.out.println(note);
 //
+
 //         ArrayList<Note> notes = new ArrayList<>();
 //         notes = getNotes("calin");
 //
@@ -142,7 +143,7 @@ public class DataBase {
 
     }
 
-    public static Note getNoteById(int id) throws SQLException{
+    public static Note getNoteById(int id, int secondID) throws SQLException{
 
         ResultSet response = statement.executeQuery("SELECT * FROM notes WHERE id="+id+";");
         response.next();
