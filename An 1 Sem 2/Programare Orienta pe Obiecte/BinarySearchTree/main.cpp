@@ -3,6 +3,7 @@
     adding nodes to the tree, deleting nodes,
     travers the tree or get the height of the tree
 */
+TEST
 
 /* As I work to the project, I'am gonna add more
     features to the menu.
